@@ -13,16 +13,16 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../assets/vendor/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="../assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
-    <link rel="stylesheet" href="../assets/vendor/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/vendor/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="/vendor/toastr/toastr.min.css">
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/color_skins.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/color_skins.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -33,32 +33,29 @@
 
     <div id="wrapper">
 
-      <% unless action_name == 'new' ||  action_name == 'edit' %> 
           <%= render partial: "layouts/navbar" %>
-      <% end %>
 
-      <% unless action_name == 'new' ||  action_name == 'edit' %>
+
+ 
           <%= render partial: "layouts/sidebar" %>
-      <% end %>
+
 
       <div id="main-content">
-        <div class="container-fluid">
             <%= yield %>
-        </div>
       </div>
     </div>
 
 
     <!-- Javascript -->
-    <script src="assets/bundles/libscripts.bundle.js"></script>
-    <script src="assets/bundles/vendorscripts.bundle.js"></script>
+    <script src="/assets/bundles/libscripts.bundle.js"></script>
+    <script src="/assets/bundles/vendorscripts.bundle.js"></script>
 
-    <script src="../assets/vendor/toastr/toastr.js"></script>
-    <script src="assets/bundles/chartist.bundle.js"></script>
-    <script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+    <script src="/vendor/toastr/toastr.js"></script>
+    <script src="/assets/bundles/chartist.bundle.js"></script>
+    <script src="/assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
 
-    <script src="assets/bundles/mainscripts.bundle.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="/assets/bundles/mainscripts.bundle.js"></script>
+    <script src="/assets/js/index.js"></script>
 
   </body>
 </html>
