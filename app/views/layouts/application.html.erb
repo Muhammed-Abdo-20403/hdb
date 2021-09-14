@@ -29,20 +29,27 @@
   </head>
 
   <body>
-    
-
     <div id="wrapper">
-
+        <% unless action_name == 'new' ||  action_name == 'edit' %>
           <%= render partial: "layouts/navbar" %>
+        <% end %>  
 
-
- 
+        <% unless action_name == 'new' ||  action_name == 'edit' %>
           <%= render partial: "layouts/sidebar" %>
-
-
-      <div id="main-content">
-            <%= yield %>
-      </div>
+        <% end %>
+        <% if current_user.present? %>
+            <div id="main-content">
+              <% if notice %>
+                <p class="alert alert-success"><%= notice %></p>
+              <% end %>
+              <% if alert %>
+                <p class="alert alert-danger"><%= alert %></p>
+              <% end %>
+              <%= yield %>
+            </div>
+        <% else %>
+          <%= yield %>
+        <% end %>
     </div>
 
 
