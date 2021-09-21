@@ -2,9 +2,10 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
 
 
-    private 
+    protected
 
-    def user_pramaters
-        params.require(:add_name_to_users).permit(:name, :phone)
-    end 
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:phone])
+    end
 end
