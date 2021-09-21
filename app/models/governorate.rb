@@ -1,0 +1,2 @@
+class Governorate < ApplicationRecord
+end
