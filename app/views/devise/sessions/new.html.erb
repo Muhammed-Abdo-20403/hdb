@@ -1,0 +1,48 @@
+<!-- WRAPPER -->
+<div id="wrapper">
+  <div class="vertical-align-wrap">
+    <div class="vertical-align-middle auth-main">
+      <div class="auth-box">
+        <div class="top">
+            <img src="/images/logo-white.svg" alt="Lucid">
+        </div>
+        <div class="card">
+          <div class="header">
+              <p class="lead">Login to your account</p>
+          </div>
+          <div class="body">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:'form-auth-small') do |f| %>
+                  
+                  <div class="form-group">
+                    <%= f.label :email, class:"control-label sr-only" %>
+                    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder:"Email" %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :password, class:"control-label sr-only" %>
+                    <%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder:"Password" %>
+                  </div>
+                  
+                  <% if devise_mapping.rememberable? %>
+                    <div class="form-group clearfix">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me, class:"fancy-checkbox element-left" %>
+                    </div>
+                  <% end %>
+                  
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                  
+                  <div class="bottom">
+                      <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="">Forgot password?</a></span>
+                      <span>Don't have an account? <a href="<%= new_user_registration_path %>">Register</a></span>
+                  </div>
+                  
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END WRAPPER -->
+
