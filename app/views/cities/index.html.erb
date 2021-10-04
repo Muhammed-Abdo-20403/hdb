@@ -88,7 +88,7 @@
                                     <td><%= c.id %></td>
                                     <td><span><%= c.name %></span></td>
                                     <td><span class="text-info"><%= c.governorate.try(:name) %></span></td>
-                                    <td><%= @city.created_at %></td>
+                                    <td><%= c.created_at.strftime('%d/%m/%Y %I:%M %p') %></td>
                                     <td>                                            
                                         <button type="button" class="btn btn-info" title="Edit">
                                             <%= link_to edit_city_path(c.id) do |icon| %>
