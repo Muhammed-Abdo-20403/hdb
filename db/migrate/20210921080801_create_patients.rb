@@ -7,8 +7,6 @@ class CreatePatients < ActiveRecord::Migration[6.0]
       t.integer :age
       t.string :sex
       t.references :city
-      t.references :hospital
-      t.references :governorate
       t.timestamps
     end
   end
