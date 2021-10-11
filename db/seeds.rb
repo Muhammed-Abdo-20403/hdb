@@ -10,12 +10,16 @@ require_relative 'seed_diseases'
 require_relative 'seed_cities'
 require_relative 'seed_hospitals'
 
+Rails.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger.level = Logger::DEBUG
+
 cities_and_governorates
 
 create_hospital
 
-
-1000.times do
+patients = []
+1000.times do |patient|
    p = Patient.new
    p.name = Faker::Name.name
    p.email = Faker::Internet.email
@@ -23,7 +27,21 @@ create_hospital
    p.sex = Faker::Gender.binary_type
    p.phone = Faker::PhoneNumber.cell_phone_in_e164
    p.city_id = rand(1..183)
-   p.save
+   patients << p
+
+   Patient.import patients if patient % 100 == 0 
 end
 
 create_diseases
+
+cases = []
+10000.times do |i|
+   c = Case.new
+   c.patient_id = rand(1..1000)
+   c.disease_id = rand(1..169)
+   c.severity = rand(0..1)
+
+   cases << c
+
+   Case.import cases if i % 1000 == 0 
+end
