@@ -70,6 +70,8 @@ gem 'mini_magick'
 
 gem 'faker'
 
+gem 'activerecord-import'
+
 gem 'dotenv-rails', groups: [:development, :test]
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
