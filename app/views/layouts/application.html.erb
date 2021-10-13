@@ -30,7 +30,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="theme-orange">
     <div id="wrapper">
         <% unless action_name == 'new' ||  action_name == 'edit' %>
           <%= render partial: "layouts/navbar" %>
