@@ -11,7 +11,7 @@
     <meta name="description" content="Lucid Bootstrap 4x Admin Template">
     <meta name="author" content="WrapTheme, design by: ThemeMakker.com">
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <!-- VENDOR CSS -->
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
@@ -23,7 +23,7 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/blog.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
     <link rel="stylesheet" href="/assets/css/color_skins.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -40,8 +40,7 @@
           <%= render partial: "layouts/sidebar" %>
         <% end %>
         <% if current_user.present? %>
-            <div id="main-content">
-              <% if notice %>
+               <% if notice %>
                 <p class="alert alert-success"><%= notice %></p>
               <% end %>
               <% if alert %>
@@ -66,7 +65,7 @@
     <script src="/assets/bundles/mainscripts.bundle.js"></script>
     <script src="/assets/js/index.js"></script>
 
-    <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
   </body>
 </html>
