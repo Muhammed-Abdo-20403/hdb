@@ -50,15 +50,15 @@ group :test do
   gem 'webdrivers'
 end
 
+gem "rails-i18n"
+
 gem 'devise' 
 
 gem 'omniauth'
 
-gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
 
 gem 'omniauth-twitter'
-
-gem 'omniauth-facebook'
 
 gem 'omniauth-google-oauth2'
 
