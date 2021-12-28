@@ -2,10 +2,10 @@
     <div class="sidebar-scroll">
         <div class="user-account">
             <% if current_user.avatar.attached? %>
-                <%= image_tag current_user.avatar, class: "rounded-circle user-photo" %>
+                <%= image_tag current_user.avatar, style:"width: 60px; height: 70px;", class: "rounded-circle user-photo" %>
             <% end %>
             <div class="dropdown">
-                <span>Welcome,</span>
+                <span><%= t('hello') %>,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown">
                     <strong>
                         <%= current_user.name %>
