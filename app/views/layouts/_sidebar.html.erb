@@ -2,24 +2,41 @@
     <div class="sidebar-scroll">
         <div class="user-account">
             <% if current_user.avatar.attached? %>
-                <%= image_tag current_user.avatar, style:"width: 60px; height: 70px;", class: "rounded-circle user-photo" %>
+                <%= image_tag current_user.avatar, class: "rounded-circle user-photo" %>
             <% end %>
             <div class="dropdown">
-                <span><%= t('hello') %>,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown">
+                <span>Welcome,</span>
+                <a href="" class="dropdown-toggle user-name" data-toggle="dropdown" style="font-size: 13px;">
                     <strong>
                         <%= current_user.name %>
                     </strong>
                 </a>                    
                 <ul class="dropdown-menu dropdown-menu-right account animated flipInY">
                     <li><a href="<%= edit_user_registration_path %>"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
-                    <li class="divider"></li>
+                    <li><a href=""><i class="icon-envelope-open"></i>Messages</a></li>
+                    <li><a href=""><i class="icon-settings"></i>Settings</a></li>                    
                     <li>
-                        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                        <%= link_to  destroy_user_session_path, method: :delete do %>
+                            <i class="icon-power"></i>
+                            Logout    
+                        <% end %>
                     </li>
                 </ul>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                    <h6>5+</h6>
+                    <small>Experience</small>                        
+                </div>
+                <div class="col-4">
+                    <h6>400+</h6>
+                    <small>Employees</small>                        
+                </div>
+                <div class="col-4">                        
+                    <h6>80+</h6>
+                    <small>Clients</small>
+                </div>
             </div>
         </div>
         <!-- Nav tabs -->
