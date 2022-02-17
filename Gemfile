@@ -64,10 +64,6 @@ gem 'omniauth-google-oauth2'
 
 gem 'kaminari'
 
-gem 'carrierwave'
-
-gem 'mini_magick'
-
 gem 'faker'
 
 gem 'activerecord-import'
