@@ -1,33 +1,33 @@
 def cities_and_governorates
    
-   cairo = Governorate.new(name: "Cairo")
-   alexandria = Governorate.new(name: "Alexandria")
-   ismailia =  Governorate.new(name: "Ismailia")
-   aswan = Governorate.new(name: "Aswan")
-   asyut =  Governorate.new(name: "Asyut")
-   the_aqasr = Governorate.new(name: "The Aqasr")
-   albahr_alahmar = Governorate.new(name: "Albahr Alahmar")
-   albuhayra = Governorate.new(name: "Albuhayra")
-   bani_sweif = Governorate.new(name: "Bani Sweif")
-   por_said = Governorate.new(name: "Por Said")
-   south_of_sinaa = Governorate.new(name: "South of Sinaa")
-   giza = Governorate.new(name: "Giza")
-   dakahlia = Governorate.new(name: "Dakahlia")
-   damietta = Governorate.new(name: "Damietta")
-   sohag = Governorate.new(name: "Sohag")
-   suez = Governorate.new(name: "Suez")
-   alsharqia = Governorate.new(name: "Alsharqia")
-   north_sinaa = Governorate.new(name: "North Sinai")
-   algharbia = Governorate.new(name: "Algharbia")
-   fayoum = Governorate.new(name: "Fayoum")
-   qalyubia = Governorate.new(name: "Qalyubia")
-   qana = Governorate.new(name: "Qana")
-   kafr_el_sheikh = Governorate.new(name: "Kafr El-Sheikh")
-   matruh = Governorate.new(name: "Matruh")
-   luxor = Governorate.new(name: "Luxor")
-   menoufia = Governorate.new(name: "Menoufia")
-   minya = Governorate.new(name: "Minya")
-   alwadi_aljadid = Governorate.new(name: "Alwadi Aljadid")
+   cairo = Governorate.create!(name: "Cairo")
+   alexandria = Governorate.create!(name: "Alexandria")
+   ismailia =  Governorate.create!(name: "Ismailia")
+   aswan = Governorate.create!(name: "Aswan")
+   asyut =  Governorate.create!(name: "Asyut")
+   the_aqasr = Governorate.create!(name: "The Aqasr")
+   albahr_alahmar = Governorate.create!(name: "Albahr Alahmar")
+   albuhayra = Governorate.create!(name: "Albuhayra")
+   bani_sweif = Governorate.create!(name: "Bani Sweif")
+   por_said = Governorate.create!(name: "Por Said")
+   south_of_sinaa = Governorate.create!(name: "South of Sinaa")
+   giza = Governorate.create!(name: "Giza")
+   dakahlia = Governorate.create!(name: "Dakahlia")
+   damietta = Governorate.create!(name: "Damietta")
+   sohag = Governorate.create!(name: "Sohag")
+   suez = Governorate.create!(name: "Suez")
+   alsharqia = Governorate.create!(name: "Alsharqia")
+   north_sinaa = Governorate.create!(name: "North Sinai")
+   algharbia = Governorate.create!(name: "Algharbia")
+   fayoum = Governorate.create!(name: "Fayoum")
+   qalyubia = Governorate.create!(name: "Qalyubia")
+   qana = Governorate.create!(name: "Qana")
+   kafr_el_sheikh = Governorate.create!(name: "Kafr El-Sheikh")
+   matruh = Governorate.create!(name: "Matruh")
+   luxor = Governorate.create!(name: "Luxor")
+   menoufia = Governorate.create!(name: "Menoufia")
+   minya = Governorate.create!(name: "Minya")
+   alwadi_aljadid = Governorate.create!(name: "Alwadi Aljadid")
 
    all_governorates = 
             [
@@ -37,8 +37,6 @@ def cities_and_governorates
                algharbia, fayoum, qalyubia, qana, kafr_el_sheikh, matruh,
                luxor, menoufia, minya, alwadi_aljadid 
             ]
-
-   Governorate.import all_governorates
 
    all_cities = []
    all_cities << City.new(name: "Cairo", governorate_id: cairo.id)
@@ -227,4 +225,4 @@ def cities_and_governorates
    all_cities << City.new(name: "Al-Bayadiyah", governorate_id: luxor.id)
 
    City.import all_cities
-end                                                                                                                                                                                                                                                                                                                                                                                                                                
+end     
