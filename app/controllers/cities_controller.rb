@@ -1,6 +1,5 @@
 class CitiesController < ApplicationController
     def index
-        @cities = City.page(params[:page]).per(25)
         @city = City.new
     end
 

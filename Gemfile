@@ -64,7 +64,7 @@ gem 'omniauth-google-oauth2'
 
 gem 'omniauth-github'
 
-gem 'kaminari'
+gem 'pagy'
 
 gem 'faker'
 

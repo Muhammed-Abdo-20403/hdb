@@ -1,111 +1,86 @@
-<div class="block-header">
-    <div class="row">
-        <div class="col-lg-6 col-md-8 col-sm-12">
-            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Form Validation</h2>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>                            
-                <li class="breadcrumb-item">Cities</li>
-                <li class="breadcrumb-item active">All Cities</li>
-            </ul>
-        </div>            
-        <div class="col-lg-6 col-md-4 col-sm-12 text-right">
-            <div class="bh_chart hidden-xs">
-                <div class="float-left m-r-15">
-                    <small>Visitors</small>
-                    <h6 class="mb-0 mt-1"><i class="icon-user"></i> 1,784</h6>
-                </div>
-                <span class="bh_visitors float-right">2,5,1,8,3,6,7,5</span>
-            </div>
-            <div class="bh_chart hidden-sm">
-                <div class="float-left m-r-15">
-                    <small>Visits</small>
-                    <h6 class="mb-0 mt-1"><i class="icon-globe"></i> 325</h6>
-                </div>
-                <span class="bh_visits float-right">10,8,9,3,5,8,5</span>
-            </div>
-            <div class="bh_chart hidden-sm">
-                <div class="float-left m-r-15">
-                    <small>Chats</small>
-                    <h6 class="mb-0 mt-1"><i class="icon-bubbles"></i> 13</h6>
-                </div>
-                <span class="bh_chats float-right">1,8,5,6,2,4,3,2</span>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Cities </h2>
+                </div>         
             </div>
         </div>
-    </div>
-</div>
 
-<div class="row clearfix">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-                <h2>New City</h2>
-            </div>
-            <div class="body">
-                <%= form_with model: @city, local: true do |f| %>
-                        <% if @city.errors.any? %>
-                            <% @city.errors.full_messages.each do |msg| %>
-                                <p id="error-multiselect"><%= msg %></p>
-                            <% end %>
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>New City</h2>
+                    </div>
+                    <div class="body">
+                        <%= form_with model: @city, local: true do |f| %>
+                                <% if @city.errors.any? %>
+                                    <% @city.errors.full_messages.each do |msg| %>
+                                        <p id="error-multiselect"><%= msg %></p>
+                                    <% end %>
+                                <% end %>
+                                <div class="form-group"> <b></b>
+                                    <%= f.label :name, "City Name" %>
+                                    <%= f.text_field :name, class: "form-control" %>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.label :governorate_id, "City Name" %>
+                                    <%= f.select(:governorate_id, Governorate.all.map {|g| [g.name, g.id]}, {include_blank: 'Select Governorate'}, {class:"form-control"})%>                                  
+                                </div>
+                                
+                                <br>
+                                <%= f.submit "REGISTER", class:"btn btn-primary" %>
                         <% end %>
-                        <div class="form-group"> <b></b>
-                            <%= f.label :name, "City Name" %>
-                            <%= f.text_field :name, class: "form-control" %>
-                        </div>
-                        <div class="form-group">
-                            <%= f.label :governorate_id, "City Name" %>
-                            <%= f.select(:governorate_id, Governorate.all.map {|g| [g.name, g.id]}, {include_blank: 'Select Governorate'}, {class:"form-control"})%>                                  
-                        </div>
-                        
-                        <br>
-                        <%= f.submit "REGISTER", class:"btn btn-primary" %>
-                <% end %>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="row clearfix">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="header">
-                <h2>Cities</h2>
-            </div>
-            <div class="body">
-                <div class="table-responsive">
-                    <table class="table m-b-0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>City Name</th>
-                                <th>Governorate</th>
-                                <th>Created At</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @cities.each do |c| %>
-                                <tr>
-                                    <td><%= c.id %></td>
-                                    <td><span><%= c.name %></span></td>
-                                    <td><span class="text-info"><%= c.governorate.try(:name) %></span></td>
-                                    <td><%= c.created_at.strftime('%d/%m/%Y %I:%M %p') %></td>
-                                    <td>                                            
-                                        <button type="button" class="btn btn-info" title="Edit">
-                                            <%= link_to edit_city_path(c.id) do |icon| %>
-                                                <i class="fa fa-edit"></i>
-                                            <% end %>
-                                        </button>
-                                        <button type="button" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete">
-                                            <%= link_to city_path(c.id), data: { confirm: 'Are you sure?' }, method: :delete do |icon| %>
-                                                <i class="fa fa-trash-o"></i>
-                                            <% end %>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
-                    <%= paginate @cities %>
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Cities</h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>City Name</th>
+                                        <th>Governorate</th>
+                                        <th>Created At</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% City.all.each do |c| %>
+                                        <tr>
+                                            <td><%= c.id %></td>
+                                            <td><span><%= c.name %></span></td>
+                                            <td><span class="text-info"><%= c.governorate.try(:name) %></span></td>
+                                            <td><%= c.created_at.strftime('%d/%m/%Y %I:%M %p') %></td>
+                                            <td>                                            
+                                                <button type="button" class="btn btn-info" title="Edit">
+                                                    <%= link_to edit_city_path(c.id) do |icon| %>
+                                                        <i class="fa fa-edit"></i>
+                                                    <% end %>
+                                                </button>
+                                                <button type="button" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete">
+                                                    <%= link_to city_path(c.id), data: { confirm: 'Are you sure?' }, method: :delete do |icon| %>
+                                                        <i class="fa fa-trash-o"></i>
+                                                    <% end %>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
