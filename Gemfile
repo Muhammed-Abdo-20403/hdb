@@ -62,11 +62,15 @@ gem 'omniauth-twitter'
 
 gem 'omniauth-google-oauth2'
 
+gem 'omniauth-github'
+
 gem 'kaminari'
 
 gem 'faker'
 
 gem 'activerecord-import'
+
+gem "omniauth-rails_csrf_protection"
 
 gem 'dotenv-rails', groups: [:development, :test]
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
