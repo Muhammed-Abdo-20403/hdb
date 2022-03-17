@@ -5,8 +5,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, :phone, :email, :password, presence: true
+  validates :name, :email, :password, presence: true
 
   has_one_attached :avatar 
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+        user.provider = auth["provider"]
+        user.uid = auth["uid"]
+        user.name = auth["info"][name]
+    end
+  end
 
 end
