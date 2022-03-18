@@ -57,7 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% City.all.each do |c| %>
+                                    <% @cities.each do |c| %>
                                         <tr>
                                             <td><%= c.id %></td>
                                             <td><span><%= c.name %></span></td>
@@ -80,6 +80,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <%== pagy_bootstrap_nav(@pagy) %>
                     </div>
                 </div>
             </div>

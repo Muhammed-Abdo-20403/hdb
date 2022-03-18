@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
     def index
+        @pagy, @cities = pagy(City.all, items: 25)
         @city = City.new
     end
 
