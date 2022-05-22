@@ -3,6 +3,7 @@ class CreateCases < ActiveRecord::Migration[6.0]
     create_table :cases do |t|
       t.references :patient
       t.references :disease
+      t.references :hospital
       t.integer :severity
       t.timestamps
     end

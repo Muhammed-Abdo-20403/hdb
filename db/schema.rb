@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 2021_10_13_092937) do
   create_table "cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "patient_id"
     t.bigint "disease_id"
+    t.bigint "hospital_id"
     t.integer "severity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["disease_id"], name: "index_cases_on_disease_id"
+    t.index ["hospital_id"], name: "index_cases_on_hospital_id"
     t.index ["patient_id"], name: "index_cases_on_patient_id"
   end
 
@@ -66,12 +68,10 @@ ActiveRecord::Schema.define(version: 2021_10_13_092937) do
 
   create_table "hospitals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.bigint "city_id"
+    t.string "hospital_type"
     t.bigint "governorate_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_hospitals_on_city_id"
     t.index ["governorate_id"], name: "index_hospitals_on_governorate_id"
   end
 
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_092937) do
     t.string "email"
     t.string "phone"
     t.integer "age"
-    t.string "sex"
+    t.string "gender"
     t.bigint "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
