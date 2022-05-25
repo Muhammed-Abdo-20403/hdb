@@ -1,6 +1,5 @@
 class Governorate < ApplicationRecord
     has_many :cities
-
     
     def self.count_governorates
         Governorate.count

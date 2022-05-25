@@ -1,6 +1,7 @@
 class Case < ApplicationRecord
    belongs_to :patient 
    belongs_to :disease
+   has_many :hospitals
 
    def self.count_cases
        Case.count

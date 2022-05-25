@@ -4,7 +4,7 @@ class City < ApplicationRecord
     
     validates :name, presence: true
 
-    def self.count_city
+    def self.count_cities
         City.count 
     end
 end
