@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "dashboards#root"
 
   resources :users
-  resources :hospotals
+  resources :hospitals
   resources :governorates
   resources :cities
   resources :patients
