@@ -2,16 +2,11 @@ class Patient < ApplicationRecord
    has_many :cases
    has_many :diseases
    belongs_to :city
-   # scope :male, -> { where gender: "Male" }
-   # scope :female, -> { where gender: "Female" }
+   scope :male_patients, -> { where gender: "Male" }
+   scope :female_patients, -> { where gender: "Female" }
    
    def self.count_patients 
        Patient.count    
-   end
-
-   def self.sort_genders 
-      count_males = Patient.where(gender: "Male").count
-      count_female = Patient.where(gender: "Female").count
    end
 
    def self.count_patients_with_their_cities

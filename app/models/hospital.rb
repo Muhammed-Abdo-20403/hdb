@@ -5,7 +5,7 @@ class Hospital < ApplicationRecord
    scope :private_hospitals, -> { where hospital_type: "Private" }
    
    def self.count_hospitals
-        Hospital.count
+      Hospital.count
    end 
 
    def self.count_cases_for_per_hospital 
@@ -14,4 +14,13 @@ class Hospital < ApplicationRecord
               .group("hospital_name")
               .order("count_cases desc")
    end
+
+   def self.most_disease_spread_in_hospital
+      Hospital.joins(cases: :disease)
+              .select("diseases.name as disease_name, hospitals.name as hospital_name, count(cases.id) as ct_cases")
+              .group("hospital_name, disease_name")  
+              .order("ct_cases desc").limit(6)
+
+   end
+
 end
