@@ -1,67 +1,64 @@
-<div class="row clearfix">
-    <div class="col-lg-2 col-md-12">
-    </div>
-    <div class="col-lg-5 col-md-12">
-        <div class="card">
-            <div class="body">
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                    <%= render "devise/shared/error_messages", resource: resource %>
-                    <div class="card profile-header">                      
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <% if current_user.avatar.attached? %>
-                                <%= image_tag current_user.avatar, style:"width: 60px; height: 70px;", class: "rounded-circle user-photo" %>
-                                <% end %>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="form-group">
-                                    <%= f.label :avatar, "Choose Your Photo" %>
-                                    <%= f.file_field :avatar %>
+<div class="vertical-align-wrap">
+    <div class="vertical-align-middle auth-main">
+        <div class="auth-box">
+            <div class="top">
+                <img src="/images/logo-white.svg" alt="Lucid">
+            </div>
+            <div class="card">
+                <div class="body">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                        <div class="card profile-header">                      
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <% if current_user.avatar.attached? %>
+                                    <%= image_tag current_user.avatar, style:"width: 60px; height: 70px;", class: "rounded-circle user-photo" %>
+                                    <% end %>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <%= f.label :avatar, "Choose Your Photo" %>
+                                        <%= f.file_field :avatar %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12">
-                            <h6>Account Data</h6>
-                            <div class="form-group">
-                                <%= f.text_field :name, class: "form-control",  placeholder: "Username" %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.text_field :phone, class: "form-control",  placeholder: "Update Your Phone" %>
-                            </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12">
+                                <h6>Account Data</h6>
+                                <div class="form-group">
+                                    <%= f.text_field :name, class: "form-control",  placeholder: "Username" %>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.text_field :phone, class: "form-control",  placeholder: "Update Your Phone" %>
+                                </div>
 
-                            <div class="form-group">
-                                <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder:"Email" %>
+                                <div class="form-group">
+                                    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder:"Email" %>
+                                </div>
+                            </div>
+                            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                            <% end %>
+                            <div class="col-lg-12 col-md-12">
+                                <h6>Change Password</h6>
+                                <div class="form-group">
+                                    <%= f.password_field :current_password, class: "form-control", autocomplete: "Password", placeholder:"Current Password" %>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.password_field :password, class: "form-control", autocomplete: "password", placeholder:"New Password" %>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "Password", placeholder:"Password Confirmation" %>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.submit "Update", class:"btn btn-primary" %>
+                                    <%= link_to 'Back', :back, class: "btn btn-default" %>
+                                </div>
                             </div>
                         </div>
-                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                        <% end %>
-                        <div class="col-lg-12 col-md-12">
-                            <h6>Change Password</h6>
-                            <div class="form-group">
-                                <%= f.password_field :current_password, class: "form-control", autocomplete: "Password", placeholder:"Current Password" %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.password_field :password, class: "form-control", autocomplete: "password", placeholder:"New Password" %>
-                                <% if @minimum_password_length %>
-                                <br />
-                                <em><%= @minimum_password_length %> characters minimum</em>
-                                <% end %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "Password", placeholder:"Password Confirmation" %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.submit "Update", class:"btn btn-primary" %>
-                            </div>
-                            <div class="form-group">
-                                <%= link_to 'Back', :back %>
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
