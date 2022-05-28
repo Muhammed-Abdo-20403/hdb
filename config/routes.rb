@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :cities
   resources :patients
   resources :diseases
+  resources :cases
 
   get '/auth/:provider/callback', to: 'callbacks#github'
 end
