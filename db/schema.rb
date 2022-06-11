@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_092937) do
+ActiveRecord::Schema.define(version: 2022_06_07_143442) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 2021_10_13_092937) do
     t.bigint "patient_id"
     t.bigint "disease_id"
     t.bigint "hospital_id"
+    t.bigint "doctor_id"
     t.integer "severity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["disease_id"], name: "index_cases_on_disease_id"
+    t.index ["doctor_id"], name: "index_cases_on_doctor_id"
     t.index ["hospital_id"], name: "index_cases_on_hospital_id"
     t.index ["patient_id"], name: "index_cases_on_patient_id"
   end
@@ -58,6 +60,28 @@ ActiveRecord::Schema.define(version: 2021_10_13_092937) do
     t.boolean "contagious"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "doctors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "specialization"
+    t.string "phone"
+    t.integer "age"
+    t.string "email"
+    t.boolean "gender"
+    t.bigint "hospital_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
+  end
+
+  create_table "doctors_per_hospitals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "hospital_id"
+    t.bigint "doctor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_doctors_per_hospitals_on_doctor_id"
+    t.index ["hospital_id"], name: "index_doctors_per_hospitals_on_hospital_id"
   end
 
   create_table "governorates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -104,4 +128,5 @@ ActiveRecord::Schema.define(version: 2021_10_13_092937) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "doctors", "hospitals"
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  specialization: MyString
+  phone: MyString
+  gender: false
+  hospital: one
+  education: MyString
+
+two:
+  name: MyString
+  specialization: MyString
+  phone: MyString
+  gender: false
+  hospital: two
+  education: MyString
