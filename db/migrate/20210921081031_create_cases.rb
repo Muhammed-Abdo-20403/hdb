@@ -4,6 +4,7 @@ class CreateCases < ActiveRecord::Migration[6.0]
       t.references :patient
       t.references :disease
       t.references :hospital
+      t.references :doctor
       t.integer :severity
       t.timestamps
     end

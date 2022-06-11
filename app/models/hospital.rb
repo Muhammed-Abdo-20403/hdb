@@ -1,6 +1,6 @@
 class Hospital < ApplicationRecord
    has_many :cases
-
+   has_many :doctors 
    scope :public_hospitals, -> { where hospital_type: "Public" }
    scope :private_hospitals, -> { where hospital_type: "Private" }
    
