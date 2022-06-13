@@ -13,103 +13,44 @@
                 <div class="card">
                     <div class="header">
                         <h2>List</h2>
-                        <ul class="header-dropdown">
-                            <li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#add_user">Add User</a></li>
-                        </ul>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
                             <table class="table table-hover js-basic-example dataTable table-custom m-b-0">
                                 <thead>
                                     <tr>                                        
+                                        <th>Icon</th>
                                         <th>Name</th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Cities</th>
                                         <th>Created Date</th>
-                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="width45">
-                                            <img src="/images/xs/avatar1.jpg" class="rounded-circle width35" alt="">
-                                        </td>
-                                        <td>
-                                            <h6 class="mb-0">Marshall Nichols</h6>
-                                            <span>marshall-n@gmail.com</span>
-                                        </td>
-                                        <td><span class="badge badge-danger">Super Admin</span></td>
-                                        <td>24 Jun, 2015</td>
-                                        <td>CEO and Founder</td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="/images/xs/avatar2.jpg" class="rounded-circle width35" alt="">
-                                        </td>
-                                        <td>
-                                            <h6 class="mb-0">Susie Willis</h6>
-                                            <span>sussie-w@gmail.com</span>
-                                        </td>
-                                        <td><span class="badge badge-info">Admin</span></td>
-                                        <td>28 Jun, 2015</td>
-                                        <td>Team Lead</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="/images/xs/avatar3.jpg" class="rounded-circle width35" alt="">
-                                        </td>
-                                        <td>
-                                            <h6 class="mb-0">Debra Stewart</h6>
-                                            <span>debra@gmail.com</span>
-                                        </td>
-                                        <td><span class="badge badge-info">Admin</span></td>
-                                        <td>21 July, 2015</td>
-                                        <td>Team Lead</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="/images/xs/avatar4.jpg" class="rounded-circle width35" alt="">
-                                        </td>
-                                        <td>
-                                            <h6 class="mb-0">Erin Gonzales</h6>
-                                            <span>Erinonzales@gmail.com</span>
-                                        </td>
-                                        <td><span class="badge badge-default">Employee</span></td>
-                                        <td>21 July, 2015</td>
-                                        <td>Web Developer</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="/images/xs/avatar3.jpg" class="rounded-circle width35" alt="">
-                                        </td>
-                                        <td>
-                                            <h6 class="mb-0">Ava Alexander</h6>
-                                            <span>alexander@gmail.com</span>
-                                        </td>
-                                        <td><span class="badge badge-success">HR Admin</span></td>
-                                        <td>21 July, 2015</td>
-                                        <td>HR</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                        </td>
-                                    </tr>
+                                    <% @governorates.each do |g| %>
+                                        <tr>
+                                            <td class="width45">
+                                                <img src="/images/governorate.jpg" class="rounded-circle width35" alt="">
+                                            </td>
+                                            <td>
+                                                <h6 class="mb-0"><%= g.name %></h6>
+                                            </td>
+                                            <td><span class="badge badge-danger"><%= @govermorates_and_its_cities %></span></td>
+                                            <td><%= g.created_at.strftime('%d/%m/%Y %I:%M %p') %></td>
+                                            <td>
+                                                <button type="button" class="btn btn-info" title="Edit">
+                                                    <%= link_to edit_governorate_path(g.id) do |icon| %>
+                                                        <i class="fa fa-edit"></i>
+                                                    <% end %>
+                                                </button>
+                                                <button type="button" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete">
+                                                    <%= link_to governorate_path(g.id), data: { confirm: 'Are you sure?' }, method: :delete do |icon| %>
+                                                        <i class="fa fa-trash-o"></i>
+                                                    <% end %>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <% end %>
                                 </tbody>
                             </table>
                         </div>
